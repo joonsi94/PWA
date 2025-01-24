@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    li{position: relative}
+    li.hot::after{
+      position: absolute;
+      top: 3px;
+      content: "NEW!!";
+      margin-left: 10px;
+      background-color: rgb(255, 40, 40);
+      color: white;
+      padding: 3px 6px;
+      font-size: 0.6rem;
+    }
+  </style>
+</head>
+<body>
+  <ul>
+    <li class="hot">제품A</li>
+    <li>제품B</li>
+    <li>제품C</li>
+    <li class="hot">제품D</li>
+  </ul>
+</body>
+</html>

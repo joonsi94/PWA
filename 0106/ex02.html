@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    table, td{border: 1px solid black; border-collapse: collapse; }
+    /*td{border: 1px solid black;}*/
+  </style>
+</head>
+
+<body>
+  <div>
+    <h1 style="font-size: 50px; font-family: 궁서;">테이블 복습</h1>
+    <h2 style="font-size: 50px; font-family: 맑은 고딕;">테이블 복습</h2>
+<!-- tr 행 시작 테그 -->
+<!-- th 열제목 가운데정렬 진하게 -->
+<!-- td 열 왼쪽 정렬 -->
+<!-- caption 태그- 시각장애인들을 위해 읽어주는 기능이 있음 -->
+    <table>
+      <colgroup>
+        <col style="width: 200px; background-color: aqua;"/>
+        <col span="2" style="background-color: red;"/>
+        <col style="background-color: yellow;"/>
+      </colgroup>
+      <tr>
+        <td>행1열1</td><td>행1열2</td><td>행1열3</td><td>행1열4</td>
+      </tr>
+      <tr>
+        <td>행2열1</td><td>행2열2</td><td>행2열3</td><td>행2열4</td>
+      </tr>
+      <tr>
+        <td>행3열1</td><td>행3열2</td><td>행3열3</td><td>행3열4</td>
+      </tr>
+    </table>
+  </div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .content{
+      border: 1px solid black;
+      width: 300px;
+      /* 생략할려면 ..*/
+      white-space: nowrap;/* 줄바꿈 없게 */
+      overflow: hidden; /* float left right 부모태그 overflow hidden */
+      text-overflow: ellipsis;/* 넘치는 부분 ...으로 바꾸기... */
+    }
+
+    .content:hover{
+      overflow: visible;
+    }
+  </style>
+</head>
+<body>
+  <p class="content">
+    리액트(React, React.js 또는 ReactJS)는 자바스크립트 라이브러리의 하나로서 사용자 인터페이스를 만들기 위해 사용된다. 페이스북과 개별 개발자 및 기업들 공동체에 의해 유지보수된다.
+  </p>
+</body>
+</html>

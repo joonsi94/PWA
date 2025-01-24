@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+
+    }
+    #container{
+      position: relative;
+      margin: 0 auto;
+      width: 560px;
+      height: 100vh;
+    }
+
+    #container > #nav{
+      background-color: rgb(238, 238, 238);
+      padding-left: 30px;
+    }
+
+    #container > #nav > #menu{
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 20px;
+    }
+
+    #container > #content{
+      padding: 30px;
+    }
+
+    #container > #content > #middle1{
+      margin-bottom: 100px;
+      border: 1px solid black;
+    }
+    #container > #content > #middle1 > h1{
+      margin-bottom: 30px;
+    }
+
+    #container > #content > #middle1 > input{
+      width: 100%;
+      border-bottom: 1px solid black;
+      border-radius: 5px 5px 0 0;
+      height: 40px;
+      font-size: 1.5rem;
+      padding: 10px;
+      margin-bottom: 30px;
+    }
+
+    #container > #footer{
+      background-color: rgb(238, 238, 238);
+      padding: 5px;
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    #container > #content > #middle2 > a > img{
+      margin: 0 auto;
+      width: 100%;
+    } 
+  </style>
+</head>
+<!-- float:right -> overflow:hidden -->
+<!-- position:absolte -> position:relative -->
+<!-- 옆으로 나오는 태그 span img a 속성 dispaly inline -->
+<!-- 밑으로 나오는 태그 div h1~h6 p 속성 dispaly block -->
+<!-- px 픽셀 % 비율 rem(설정된 px의 두배) -->
+<!-- position : 기준이 되는거 -->
+<!-- position : 기준에 따라서
+     -top, bottom, left, fight
+     -ex)top: 30px, bottom: 30px -->
+<!-- input type="text" -->
+<!-- 자식선택자 -->
+<body>
+  <div id="container">
+    <div id="nav">
+      <div>
+        <a href="login.html"><img src="images/home.png" alt=""></a>
+      </div>
+      <div id="menu">
+        <a href="signIn.html">로그인</a>
+        <a href="signUp.html">회원가입</a>
+      </div>
+    </div>
+    <div id="content">
+      <div id="middle1">
+        <h1>아이디</h1>
+        <input type="text" name="" id="" placeholder="아이디">
+        <h1>비밀번호</h1>
+        <input type="text" name="" id="" placeholder="비밀번호">
+      </div>
+      <div>
+        <h1 >간편로그인</h1>
+      </div>
+    </div>
+    <div id="middle2">
+      <a href="https://www.naver.com" target="_blank"><img src="images/image 1.svg" alt=""></a>
+      <a href="https://www.kakaocorp.com" target="_blank"><img src="images/image 2.svg" alt=""></a>
+    </div>
+    <div id="footer">
+      <h1>COPY RIGHT 변준성</h1>
+    </div>
+  </div>
+  
+</body>
+</html>

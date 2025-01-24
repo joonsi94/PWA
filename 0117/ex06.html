@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{margin: 0; padding: 0; box-sizing: border-box;}
+    div{
+
+    }
+    #menu:checked+ul{
+      left: 0;
+    }
+    ul{
+      width: 50px;
+      top: 0;
+      left: -50px;
+      border: 1px solid black;
+      overflow: hidden;
+      translate: 2s;
+    }
+    li{
+      list-style: none;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <label for="menu">메뉴</label>
+    <input type="checkbox" name="" id="menu">
+    <ul>
+      <li>메뉴1</li>
+      <li>메뉴2</li>
+      <li>메뉴3</li>
+      <li>메뉴4</li>
+    </ul>
+  </div>
+</body>
+</html>
