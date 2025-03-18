@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JavaScriptLibraryMappings">
+    <excludedPredefinedLibrary name="javascript_work/0213/node_modules" />
+    <excludedPredefinedLibrary name="javascript_work/0214/supabase/node_modules" />
+    <excludedPredefinedLibrary name="javascript_work/0214/vite-project/node_modules" />
+    <excludedPredefinedLibrary name="javascript_work/js_sql_work/ex03/node_modules" />
+    <excludedPredefinedLibrary name="javascript_work/react-test/node_modules" />
+    <excludedPredefinedLibrary name="javascript_work/test/node_modules" />
+    <excludedPredefinedLibrary name="javascript_work/test2/test_create/node_modules" />
+  </component>
+</project>
