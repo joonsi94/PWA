@@ -12,16 +12,23 @@
 function solution(p) {
     var answer = '';
     var a = p.split('')
-        // a.splice(0,a.length-4,'*');
-        // console.log(a);
-
-    for(let i = 0; i < a.length; i++){
-        if(a[i]<a.length-4){
-            a.splice(a[i],1,'*')
-        }
-        answer = answer + a[i];
+    for (let i = 0; i < a.length - 4; i++) {
+        a.splice(i, 1, '*');
     }
+    answer = answer + a.join('');
     return answer;
 }
+
+// function solution(p) {
+    // for(let i = 0; i < a.length; i++){
+    //     if(a[i]<a.length-4){
+    //         a.splice(a[0 (i-4)],1,'*')
+    //     }
+// }
+
+// function solution(p) {
+    // a.splice(0,a.length-4,'*');
+    // console.log(a);
+// }
 
 console.log(solution("01033334444"))
