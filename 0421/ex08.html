@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul onclick="test(event)">
+        <li>바나나</li>
+        <li>사과</li>
+        <li>수박</li>
+    </ul>
+    <script>
+        function test(e){
+            console.log(e);
+            console.log(e.currentTarget); //이벤트가 걸린 요소
+            console.log(e.target); //누른 요소
+            e.target.style.backgroundColor = "red"
+        }
+    </script>
+</body>
+</html>
