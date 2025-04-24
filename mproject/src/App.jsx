@@ -12,7 +12,10 @@ import {
 import {Link, Route, Routes} from "react-router-dom";
 import RootPage from "./pages/RootPage.jsx";
 import TodoPage from "./pages/todo/TodoPage.jsx";
-import ReviewPage from "./pages/ReviewPage.jsx";
+import TodoListPage from "./pages/todo/TodoListPage.jsx";
+import TodoAddPage from "./pages/todo/TodoAddPage.jsx";
+
+import ReviewPage from "./pages/review/ReviewPage.jsx";
 import UserAddPage from "./pages/user/UserAddPage.jsx";
 import UserListPage from "./pages/user/UserListPage.jsx";
 
@@ -22,8 +25,6 @@ const {useBreakpoint} = Grid;
 import {useLocation} from 'react-router-dom';
 import UserLoginPage from "./pages/user/UserLoginPage.jsx";
 import Logout from "./components/Logout.jsx";
-import TodoListPage from "./pages/todo/TodoListPage.jsx";
-import TodoAddPage from "./pages/todo/TodoAddPage.jsx";
 
 // 메뉴 항목 구성
 const items = [
@@ -44,7 +45,11 @@ const items = [
     {
         key: 'review',
         icon: <FundViewOutlined/>,
-        label: <Link to={`/review`}>리뷰</Link>,
+        label: '리뷰',
+        children: [
+            {key: 'review/list', label: <Link to={`/review/list`}>ReviewList</Link>},
+            {key: 'review/add', label: <Link to={`/review/add`}>ReviewAdd</Link>}
+        ]
     },
     {
         key: 'users',
@@ -169,6 +174,10 @@ const AppLayout = () => {
                     <Route path="/user/list" element={<UserListPage/>}></Route>
                     <Route path="/user/login" element={<UserLoginPage/>}></Route>
                     <Route path="/todo" element={<TodoPage/>}>
+                        <Route path="list" element={<TodoListPage/>}></Route>
+                        <Route path="add" element={<TodoAddPage/>}></Route>
+                    </Route>
+                    <Route path="/review" element={<ReviewPage/>}>
                         <Route path="list" element={<TodoListPage/>}></Route>
                         <Route path="add" element={<TodoAddPage/>}></Route>
                     </Route>
