@@ -6,7 +6,7 @@
     <title>Document</title>
     <style>
         .red{
-            color: red;;
+            color: red;
         }
     </style>
 </head>
@@ -20,7 +20,6 @@
     <button>css토글</button>
     <script>
         const $button = document.getElementsByTagName('button')[0];
-        console.log($button);
         $button.onclick = function(){
             const $ul = document.getElementsByTagName('ul')[0];
             const $li = document.createElement('li');
@@ -30,9 +29,9 @@
         const $toggleButton = document.getElementsByTagName('button')[1];
         $toggleButton.onclick = function(){
             $lis = document.getElementsByTagName('li');
-            [...$lis].forEach($li => {
-                $li.classList.toggle('td')
-            })
+            [...$lis].forEach( $li=>{
+                $li.classList.toggle('red');
+            });
         }
     </script>
 </body>
