@@ -1,4 +1,4 @@
-import React, {use, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Layout, Menu, Button, Grid, Row, Col, Card} from 'antd';
 import {
     MenuFoldOutlined,
@@ -9,23 +9,21 @@ import {
     InfoOutlined,
     FundViewOutlined,
 } from '@ant-design/icons';
-import {Link, Route, Routes} from "react-router-dom";
+import {Link, Route, Routes, useLocation} from "react-router-dom";
 import RootPage from "./pages/RootPage.jsx";
+import Logout from "./components/Logout.jsx";
+import UserAddPage from "./pages/user/UserAddPage.jsx";
+import UserListPage from "./pages/user/UserListPage.jsx";
+import UserLoginPage from "./pages/user/UserLoginPage.jsx";
 import TodoPage from "./pages/todo/TodoPage.jsx";
 import TodoListPage from "./pages/todo/TodoListPage.jsx";
 import TodoAddPage from "./pages/todo/TodoAddPage.jsx";
-
 import ReviewPage from "./pages/review/ReviewPage.jsx";
-import UserAddPage from "./pages/user/UserAddPage.jsx";
-import UserListPage from "./pages/user/UserListPage.jsx";
+import ReviewListPage from "./pages/review/ReviewListPage.jsx";
+import ReviewAddPage from "./pages/review/ReviewAddPage.jsx";
 
 const {Header, Sider, Content, Footer} = Layout;
 const {useBreakpoint} = Grid;
-
-import {useLocation} from 'react-router-dom';
-import UserLoginPage from "./pages/user/UserLoginPage.jsx";
-import Logout from "./components/Logout.jsx";
-
 // 메뉴 항목 구성
 const items = [
     {
@@ -36,7 +34,7 @@ const items = [
     {
         key: 'todo',
         icon: <InfoOutlined/>,
-        label: 'Todo',
+        label: 'todo',
         children: [
             {key: '/todo/list', label: <Link to={`/todo/list`}>TodoList</Link>},
             {key: '/todo/add', label: <Link to={`/todo/add`}>TodoAdd</Link>},
@@ -45,10 +43,10 @@ const items = [
     {
         key: 'review',
         icon: <FundViewOutlined/>,
-        label: '리뷰',
+        label: 'review',
         children: [
-            {key: 'review/list', label: <Link to={`/review/list`}>ReviewList</Link>},
-            {key: 'review/add', label: <Link to={`/review/add`}>ReviewAdd</Link>}
+            {key: '/review/list', label: <Link to={`/review/list`}>ReviewList</Link>},
+            {key: '/review/add', label: <Link to={`/review/add`}>ReviewAdd</Link>},
         ]
     },
     {
@@ -75,12 +73,11 @@ const AppLayout = () => {
     const [name, setName] = useState('');
 
     useEffect(() => {
-        //로그인 되어 있는지 페이지 변경 할 때 항상 확인해라
-        const sessionName = sessionStorage.getItem('name');
+        // 로그인 되어 있는지 페이지 변경 할때 항상 확인해라
+        const sessionName = sessionStorage.getItem("name");
         if (sessionName) {
-            console.log("일로오냐");
             setName(sessionName);
-        } else {
+        }else{
             setName('');
         }
     }, [location.pathname]);
@@ -152,16 +149,14 @@ const AppLayout = () => {
                         />
                     )}
                     <div style={{fontSize: '1.1rem', fontWeight: 'bold'}}>
-                        {/*세션스토리지에 값이 있으면 로그아웃 출력*/}
-                        {/*세션스토리지에 값이 없으면 로그인 출력*/}
-                        <span style={{marginRight: '2rem'}}>{name && `${name}님 안녕하세요`}</span>
+                        <span style={{marginRight:'2rem'}}>{name && `${name} 님 안녕하세요`}</span>
                         <Button color="primary" variant="solid">
-                            {
-                                name ?
-                                    (<Logout></Logout>)
-                                    :
-                                    (<Link to={`/user/login`}>로그인</Link>)
-                            }
+                        {
+                            name ?
+                                (<Logout></Logout>)
+                                :
+                                (<Link to={`/user/login`}>로그인</Link>)
+                        }
                         </Button>
                     </div>
                 </Header>
@@ -178,8 +173,8 @@ const AppLayout = () => {
                         <Route path="add" element={<TodoAddPage/>}></Route>
                     </Route>
                     <Route path="/review" element={<ReviewPage/>}>
-                        <Route path="list" element={<TodoListPage/>}></Route>
-                        <Route path="add" element={<TodoAddPage/>}></Route>
+                        <Route path="list" element={<ReviewListPage/>}></Route>
+                        <Route path="add" element={<ReviewAddPage/>}></Route>
                     </Route>
                 </Routes>
 

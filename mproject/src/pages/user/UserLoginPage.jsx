@@ -9,35 +9,34 @@ const {Content} = Layout;
 function UserLoginPage(props) {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
-    const finish = async (values)=>{
+    const finish = async (values) => {
         const {email, password} = values;
-        setLoading(true); // 로그인 못하게 막음
+        setLoading(true);// 로그인 못하게 막음
         // userManager안에 loginUser 함수 호출
         const ret = await loginUser(email, password);
-        if (ret.message === 'email확인 바람'){
-            message.error('이메일을 확인해주세요')
-        } else {
-            const isMatch = await bcrypt.compare(password, ret.data.password)
-            if (isMatch){
-                message.success('로그인 성공');
+        if(ret.message === 'email'){
+            message.error('이메일을 확인하세요');
+        }else{
+            const isMatch = await bcrypt.compare(password, ret.data.password);
+            if(isMatch){
+                message.success('로그인성공하였습니다.');
                 sessionStorage.setItem('name',ret.data.name);
                 sessionStorage.setItem('email',ret.data.email);
                 sessionStorage.setItem('age',ret.data.age);
-                navigate('/')
+                navigate('/');
             }
             else{
-                message.error('패스워드를 확인하세요')
+                message.error('패스워드를 확인하세요');
             }
-            console.log(isMatch);
         }
-        setLoading(false) // 로그인 할 수 있게 풀음
+        setLoading(false);// 로그인 할 수 있게 풀음
     }
 
     return (
         <Content>
             <Flex style={{justifyContent: 'center', alignItems: 'center', height: '100%'}} vertical>
-                <h1 style={{fontSize: '2rem'}} >로그인</h1>
-                <Form onFinish={finish} initialValues={{email: 'test1@example.com', password: '12345'}}>
+                <h1 style={{fontSize: '2rem'}}>로그인</h1>
+                <Form onFinish={finish} initialValues={{email: "test1@example.com", password: "12345"}}>
                     <Form.Item
                         label="이메일"
                         name="email"

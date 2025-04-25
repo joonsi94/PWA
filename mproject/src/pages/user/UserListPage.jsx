@@ -59,10 +59,10 @@ function UserListPage(props) {
     }
 
     async function handleModalOk() {
-        const values = form.getFieldValue();
-        message.info('누름');
-        message.info(findUser.id);
-        console.log(values);
+        const values = form.getFieldsValue();
+        // message.info('누르,ㅁ');
+        // message.info(findUser.id);
+        // console.log(values);
 
         const {error}
             = await updateUserById(findUser.id, values);
@@ -70,10 +70,10 @@ function UserListPage(props) {
             if (error.code === '22P02') {
                 message.error('나이는 숫자를 입력하세요');
                 return;
-            } else {
-                message.success('성공적으로 수정하였습니다.')
-                loadData();
             }
+        } else {
+            message.success('성공적으로 수정하였습니다.');
+            loadData();
         }
 
         setShowModal(false);

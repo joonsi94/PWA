@@ -1,71 +1,78 @@
 import React, {useEffect, useState} from 'react';
 import {Button, Table, Tag} from "antd";
+import {useNavigate} from "react-router-dom";
 
 function TodoListPage(props) {
-    const [todos,setTodos] = useState([
-        {"id":1,"todo":"Do something nice for someone you care about","completed":false,"userId":152},
-        {"id":2,"todo":"Do someone you care about","completed":false,"userId":152}
+    const [todos, setTodos] = useState([
+        {"id": 1, "todo": "Do something nice for someone you care about", "completed": false, "userId": 152},
+        {"id": 2, "todo": "Do someone you care about", "completed": true, "userId": 152}
     ]);
+    const navigate = useNavigate();
 
     useEffect(() => {
-        console.log('test')
+        // console.log(todos);
     }, []);
 
     const columns = [
         {
-            title: 'Id',
-            dataIndex: 'id',
-            key: 'id',
+            title: "Id",
+            dataIndex: "id",
+            key: "id",
             width: 80,
+            // render : (a,b)=>{
+            //     console.log("a = "+a);
+            //     console.log("b = "+JSON.stringify(b));
+            //     return (<h1>{b.id}</h1>)
+            // }
         },
         {
-            title: '할일',
-            dataIndex: 'todo',
+            title: "할일",
+            dataIndex: "todo",
             key: "todo",
         },
         {
-            title: "완료여부",
-            key: 'completed',
-            dataIndex: 'completed',
+            title: "완료 여부",
+            key: "completed",
+            dataIndex: "completed",
             render: (completed, record) => (
                 // <select>
-                //     { completed ? (<option>완료</option>) : <option>미완료</option> }
+                //     { completed ? (<option>완료</option>) : (<option>미완료</option>) }
                 // </select>
-
-                <Tag color={completed ? 'green' : 'volcano'}>
-                    {completed ? "완료" : "미완료 "}
+                <Tag color={String(completed) === 'true' ? 'green' : 'volcano'}>
+                    { String(completed) === 'true' ? "완료" : "미완료"}
                 </Tag>
             )
         },
         {
             title: '사용자',
-            dataIndex: 'userId',
-            key: 'userId',
+            dataIndex: "userId",
+            key: "userId",
         }
-    ]
-    
-    const loadData = async () => {
-        console.log('누름');
-        fetch('https://dummyjson.com/todos')
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
-            setTodos(data.todos);
-        })
-    }
+    ];
 
+    const loadData = async () => {
+        fetch('https://6809e0571f1a52874cde2b14.mockapi.io/todos?sortBy=id&order=desc')
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                setTodos(data);
+            })
+    }
     return (
         <div>
             <h1>목록</h1>
+            <div style={{ display: "flex", gap:"1rem", marginTop:"1rem", marginBottom:"1rem" }}>
+                <Button type="primary" onClick={loadData}>조회</Button>
+                <Button type="primary" onClick={()=>{ navigate('/todo/modify/3')}}>수정</Button>
+                <Button type="primary" >삭제</Button>
+            </div>
+            <Table dataSource={todos} rowKey="id" columns={columns}>
+            </Table>
             {
-                todos.map(todo =>{
+                todos.map(todo => {
                     return (<h1 key={todo.id}>{todo.todo}</h1>)
                 })
             }
-            <Button type="primary" style={{margin: "1rem 0"}} onClick={loadData}>조회</Button>
-            <Table dataSource={todos} rowKey="id" columns={columns}>
-
-            </Table>
         </div>
     );
 }

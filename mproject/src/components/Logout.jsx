@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Modal} from "antd";
 import {useNavigate} from "react-router-dom";
 
 function Logout(props) {
     const navigate = useNavigate();
-    const [openModal, setOpenModal] = React.useState(false);
+    const [openModal, setOpenModal] = useState(false);
     const showModal = () => {
         setOpenModal(true);
     }
@@ -21,10 +21,9 @@ function Logout(props) {
 
     return (
         <>
-            <h1 onClick={showModal}>Logout</h1>
-            <Modal thitle="로그아웃" open={openModal} onOk={okModal} onCancel={cancelModal}>
-                <h1>로그아웃 하시겠습니까??</h1>
-
+            <h1 onClick={showModal}>로그아웃</h1>
+            <Modal title="로그아웃" open={openModal} onOk={okModal} onCancel={cancelModal}>
+                <h1>로그아웃하시겠어요?</h1>
             </Modal>
         </>
     );
