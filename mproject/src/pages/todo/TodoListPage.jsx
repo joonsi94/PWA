@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Button, Table, Tag, message} from "antd";
 import {useNavigate} from "react-router-dom";
+import {todosReq} from "../../api/mockapi.js";
 
 function TodoListPage(props) {
     const [todos, setTodos] = useState([
@@ -36,7 +37,7 @@ function TodoListPage(props) {
                 //     { completed ? (<option>완료</option>) : (<option>미완료</option>) }
                 // </select>
                 <Tag color={String(completed) === 'true' ? 'green' : 'volcano'}>
-                    { String(completed) === 'true' ? "완료" : "미완료"}
+                    {String(completed) === 'true' ? "완료" : "미완료"}
                 </Tag>
             )
         },
@@ -65,30 +66,40 @@ function TodoListPage(props) {
 
     useEffect(() => {
         loadData();
-    },[])
+    }, [])
 
     const handleDelete = () => {
         message.success('눌렸나');
-        console.log(selectedRowKeys);
+        const result = [];
+        selectedRowKeys.forEach(id => {
+            todosReq.delete(id)
+                .then(res => {
+                    result.push(res);
+                    // console.log(result);
+                    if(result.includes('200')){
+                        message.success("삭제되었습니다");
+                    }
+                })
+        })
     }
 
     return (
         <div>
             <h1>목록</h1>
-            <div style={{ display: "flex", gap:"1rem", marginTop:"1rem", marginBottom:"1rem" }}>
+            <div style={{display: "flex", gap: "1rem", marginTop: "1rem", marginBottom: "1rem"}}>
                 <Button type="primary" onClick={loadData}>조회</Button>
-                <Button type="primary" onClick={()=>{
+                <Button type="primary" onClick={() => {
                     console.log(selectedRowKeys);
-                    if(selectedRowKeys.length !== 1) {
+                    if (selectedRowKeys.length !== 1) {
                         message.warning('한개의 행을 선택하세요')
                         return; //함수종료
                     }
                     navigate('/todo/modify/${selectedRowKeys}')
                 }}>수정</Button>
-                <Button type="primary" onClick={handleDelete} >삭제</Button>
+                <Button type="primary" onClick={handleDelete}>삭제</Button>
             </div>
             {
-                todos.length === 0?
+                todos.length === 0 ?
                     (<h1>불러오는중</h1>)
                     :
                     (<Table rowSelection={rowSelection} dataSource={todos} rowKey="id" columns={columns}></Table>)
