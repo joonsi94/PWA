@@ -1,7 +1,6 @@
 {
-  "name": "rest02",
+  "name": "rest03",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "nodemon app.js",
@@ -10,7 +9,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "description": "",
   "devDependencies": {
     "nodemon": "^3.1.10"
   },
