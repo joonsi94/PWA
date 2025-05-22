@@ -1,3 +1,7 @@
+// .env 파일을 읽어오기 위한 모듈
+require("dotenv").config();
+
+const cors = require("cors"); // 다른 도메인에서 요청을 허용하는 모듈
 const pool = require("./db");
 const express = require("express"); //http 모듈 확장한 프레임워크
 const path = require("path"); // 경로를 관리 모듈
@@ -12,6 +16,8 @@ const cookieParser = require("cookie-parser");
 // application -> Cookie -> 자동으로 요청할 때 날아감
 
 const app = express(); // express 객체 생성
+
+app.use(cors()); // cors 미들웨어 사용
 
 // app.use(morgan("dev")); // 개발단계
 // app.use(morgan("combined")); // 실제 운영 배포에서 사용
@@ -63,6 +69,23 @@ app.get(
     // console.log(req.query.name);
     // console.log(req.query.age);
 
+    const conn = await pool.getConnection();
+    const result = await conn.execute("select * from users");
+    conn.release();
+    next();
+    // 끝...
+    // res.status(200).json(result[0]);
+    res.status(200).json({aa:10,bb:20});
+  },
+  (req, res, next) => {
+    console.log("일로오나");
+    // res.json('이거 두번 보내기 되냐');
+  }
+);
+
+app.get(
+  "/users",
+  async (req, res, next) => {
     const conn = await pool.getConnection();
     const result = await conn.execute("select * from users");
     conn.release();
