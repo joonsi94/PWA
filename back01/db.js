@@ -1,4 +1,3 @@
-require("dotenv").config(); // .env 파일에 내용을 읽어들여서 process.env에 변수이름
 
 const mysql = require("mysql2/promise");
 
