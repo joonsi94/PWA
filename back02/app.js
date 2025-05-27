@@ -49,6 +49,7 @@ app.get("/", (req, res, next) => {
 });
 
 app.post("/subscribe", (req, res, next) => {
+  console.log(req.body);
   ss.push({sub:req.body});
   console.log(ss);
   res.send("구독 성공");
