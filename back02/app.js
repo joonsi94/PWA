@@ -23,7 +23,7 @@ console.log(mymid.toString());
 console.log(morgan().toString());
 console.log(cookieParser(process.env.COOKIE_SECRET).toString());
 
-app.use(morgan());
+app.use(morgan("tiny"));
 app.use(cors());
 app.use("/images", express.static(path.join(__dirname, "public")));
 app.use(express.json());
@@ -42,7 +42,7 @@ app.get("/", (req, res, next) => {
   res.send("클라이언트한테 보내기");
 });
 
-app.get("/subscribe", (req, res, next) => {
+app.post("/subscribe", (req, res, next) => {
   console.log(req.body);
   res.send("구독 성공");
 });
