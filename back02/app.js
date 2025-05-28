@@ -9,7 +9,7 @@ webpush.setVapidDetails(
 
 const cors = require("cors");
 
-// const pool = require("./db");
+const pool = require("./db");
 const mymid = require("./mymiddle");
 const express = require("express");
 const path = require("path");
@@ -48,17 +48,29 @@ app.get("/", (req, res, next) => {
   res.send("클라이언트한테 보내기");
 });
 
-app.post("/subscribe", (req, res, next) => {
+app.post("/subscribe", async (req, res, next) => {
+  try{
   console.log(req.body);
-  console.log(req.body.sub);
-  console.log(req.body.sub.endpoint);
-  console.log(req.body.sub.keys.p256dn);
-  console.log(req.body.sub.keys.auth);
-  console.log(req.body.city);
+  // const {endpoint} = req.body;
+  // console.log(req.body.sub);
+  // console.log(req.body.sub.endpoint);
+  // console.log(req.body.sub.keys.p256dn);
+  // console.log(req.body.sub.keys.auth);
+  // console.log(req.body.city);
 
-  ss.push({sub:req.body});
+  const conn = await pool.getConnection();
+  const sql = "insert into subscriptions(endpoint,p256dh, auth, city) values(?,?,?,?)";
+  const result =
+  await conn.execute(sql, [req.body.endpoint,req.body.sub.keys.p256dh,req.body.sub.keys.auth,req.body.city]);
 
-  console.log(ss);
+  conn.release();
+  res.send(result)
+  } catch(e){
+    console.log(e);
+  }
+
+  // ss.push({sub:req.body});
+  // console.log(ss);
   res.send("구독 성공");
 });
 
@@ -69,8 +81,17 @@ app.get("/send", async(req, res, next) => {
       body:"미세먼지가... 좀... 버스가 몇분뒤 도착...",
       url:"https://front02-fawn.vercel.app/",
     });
-    const notifications = ss.map(item => {
+    const notifications = result[0].map((item) => {
       console.log('item = ', item);
+      const temp = {
+        endpoint: item.endpoint,
+        expriration: null,
+        keys: {
+          p256dh: item.p256dh,
+          auth: item.auth,
+        }
+      };
+      console.log("temp = ",temp)
       return webpush.sendNotification(item.sub,payload);
     })
     console.log('notifications = ', notifications);
