@@ -1,0 +1,34 @@
+<!-- shift + pageUP 뒤에서 위로 전체 지정 -->
+<!-- shift + pageDown 앞에서 밑로 전체 지정 -->
+<!-- ctrl + A 전체지정 -->
+<!-- home 제일 앞으로 -->
+<!-- end 제일 뒤로 -->
+<!-- shift + alt + f 자동 정렬 -->
+<!-- 내어쓰기 shift + tab -->
+<!-- 들여쓰기 tab -->
+<!-- F2 파일 이름바꾸기 -->
+<!DOCTYPE html> <!-- html 5버전 -->
+<html lang="en">
+
+<head> <!-- html 문서의 정의 -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>제목</h1>
+    <p style="background-color: red; color: white;">HTML CSS JAVASCRIPT</p>
+<!-- style 속성 -->
+    <a href="ex03.html" target="_blank">EX03</a>
+</body>
+
+</html>
+<script>
+    console.log("테스트입니다");
+    const p = document.querySelector("p");
+    p.addEventListener("click", ()=>{
+        p.style.backgroundColor = "blue";
+        p.style.color = "yellow";
+    });
+</script>

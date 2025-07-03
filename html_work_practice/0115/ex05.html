@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div{
+      background-color: rgb(200, 200, 200);
+    }
+    div>p{
+      color: blue;
+    }
+    #fpp:hover+p{
+      background-color: rgb(200, 200, 200);
+      animation-name: aaa;
+      animation-duration: 3s;
+      animation-iteration-count: infinite;
+    }
+    #fpp~p{
+      text-decoration: underline;
+    }
+    @keyframes aaa{
+      from{
+        background-color: rgb(0, 0, 0);
+      }
+      to{
+        background-color: rgb(200, 200, 200);
+        transform: rotate(30deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <p id="fpp">Nisi mollit laboris aliqua qui aute. Mollit consequat aliqua magna laborum velit commodo. Occaecat fugiat cupidatat ipsum ea nisi pariatur.</p>
+    <p>Nisi mollit laboris aliqua qui aute. Mollit consequat aliqua magna laborum velit commodo. Occaecat fugiat cupidatat ipsum ea nisi pariatur.</p>
+    <section>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit et quidem aspernatur fugiat, sed amet dolorem, saepe commodi in hic odit totam neque numquam delectus sit molestias similique perspiciatis voluptates!</p>
+    </section>
+    <p>Incididunt esse voluptate voluptate incididunt. Sunt dolor ad qui tempor aute tempor in sunt tempor veniam excepteur aute adipisicing. Incididunt mollit occaecat laborum aliquip voluptate magna sit. Velit cupidatat et laborum enim aliqua commodo ipsum deserunt. Eiusmod pariatur cupidatat veniam enim esse et do exercitation. Consequat do ex consequat eu. Nulla in id minim aute proident commodo ad incididunt id minim deserunt labore eu adipisicing.</p>
+    <p>Incididunt esse voluptate voluptate incididunt. Sunt dolor ad qui tempor aute tempor in sunt tempor veniam excepteur aute adipisicing. Incididunt mollit occaecat laborum aliquip voluptate magna sit. Velit cupidatat et laborum enim aliqua commodo ipsum deserunt. Eiusmod pariatur cupidatat veniam enim esse et do exercitation. Consequat do ex consequat eu. Nulla in id minim aute proident commodo ad incididunt id minim deserunt labore eu adipisicing.</p>
+  </div>
+</body>
+</html>

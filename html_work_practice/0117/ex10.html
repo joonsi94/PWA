@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{margin: 0; padding: 0; box-sizing: border-box; list-style: none;}
+    ul{
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+    }
+    li{
+      background-color: rgb(240, 240, 240);
+      position: relative;
+      height: 250px;
+    }
+    li .caption{
+      opacity: 0;
+      cursor: pointer;
+      position: absolute;
+      background-color: rgba(30, 30, 30, 0.3);
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      text-align: center;
+      transition: all 0.3s;
+      transform: scale(0);
+    }
+    li:hover .caption{
+      opacity: 1;
+      transform: scale(1);
+    }
+    li .caption > div{
+      padding-top: 50%;
+      color: rgb(240, 240, 240);
+    }
+  </style>
+</head>
+<body>
+  <h1>신상품 목록</h1>
+  <div id="container">
+    <ul>
+      <li>
+        <img src="/images/감사합니다-꾸벅담곰.gif" alt="">
+        <div class="caption">
+          <div>
+            <h1>상품1</h1>
+            <p>상품에 대한 설명 텍스트</p>
+            <p>12,345원</p>
+          </div>
+        </div>
+      </li>
+      <li>
+        <img src="/images/감사합니다-꾸벅담곰.gif" alt="">
+        <div class="caption">
+          <div>
+            <h1>상품1</h1>
+            <p>상품에 대한 설명 텍스트</p>
+            <p>12,345원</p>
+          </div>
+        </div>
+      </li>
+      <li>
+        <img src="/images/감사합니다-꾸벅담곰.gif" alt="">
+        <div class="caption">
+          <div>
+            <h1>상품1</h1>
+            <p>상품에 대한 설명 텍스트</p>
+            <p>12,345원</p>
+          </div>
+        </div>
+      </li>
+    </ul>
+    
+  </div>
+</body>
+</html>
