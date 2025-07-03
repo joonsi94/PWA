@@ -1,0 +1,35 @@
+.header{
+    display: flex;
+    gap: 1rem;
+}
+
+a{
+    text-decoration: none;
+}
+
+a:hover{
+    color: red;
+    text-decoration: underline;
+}
+
+.lotto:nth-child(odd){
+    margin: 0.3rem;
+    text-align: center;
+    display: inline-block;
+    border-radius: 50%;
+    background-color: rgb(62, 62, 244);
+    line-height: 1.8rem;
+    width: 2rem;
+    height: 2rem;
+}
+
+.lotto:nth-child(even){
+    margin: 0.3rem;
+    text-align: center;
+    display: inline-block;
+    border-radius: 50%;
+    background-color: rgb(248, 158, 65);
+    line-height: 1.8rem;
+    width: 2rem;
+    height: 2rem;
+}
