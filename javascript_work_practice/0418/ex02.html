@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" value="열심히합니다" id="inputId">
+    <ul id="fru">
+        <li>Apple</li>
+        <li>Banana</li>
+        <li>Orange</li>
+    </ul>
+    <script>
+        const {attributes} = document.getElementById('inputId');
+        console.log(attributes);
+
+        console.log(attributes.id.value);
+        console.log(attributes.type.value);
+        console.log(attributes.value.value);
+
+        document.getElementById('inputId').setAttribute('value',"오늘 야구 직관");
+        console.log(document.getElementById('inputId').getAttribute('value'));
+    </script>
+</body>
+</html>
