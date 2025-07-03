@@ -1,0 +1,17 @@
+-- 1) SELECT * FROM Customers;
+-- 2) select CustomerName, City, Country from Customers
+-- 3-1)select EmployeeID=5 from Orders
+-- 3-2)select Quantity from OrderDetails where Quantity<10
+-- 4-1)select * from Customers order by Country asc   
+-- 4-2)select ProductID, Quantity from OrderDetails order by ProductID asc, Quantity desc
+-- 5)select * from Customers limit 5
+-- 6)select CustomerID as "ID", CustomerName as "고객명", Address as "주소" from Customers;
+-- 7)select CustomerID as "아이디", CustomerName as "고객명", City as "도시", Country as "국가" 
+from Customers 
+where City="Paris" or Country="Germany" order by CustomerName asc
+limit 3
+
+심화문제)
+1- select * from Orders where OrderDate > ("1997-01-01")
+2- select * from OrderDetails where Quantity between 5 and 10
+3- select Country as "고객수" from Customers group by Country
